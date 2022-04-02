@@ -10,8 +10,8 @@ function Board(){
 }
 
 const BoardWrap = styled.div`
-width: 25rem;
-height: 30rem;
+width: 50rem;
+height: 50rem;
 background-color: aliceblue;
 border-radius: 5px;
 `;

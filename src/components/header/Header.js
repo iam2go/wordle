@@ -10,10 +10,13 @@ function Header(){
 }
 
 const HeaderStyle = styled.div`
-height: 4rem;
-display:flex;
-align-items: center;
-justify-content: center;
+  height: 8rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  h1{
+    font-size: 2.8rem;
+  }
 `
 
 export default Header;
