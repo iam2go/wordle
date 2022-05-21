@@ -1,13 +1,12 @@
 import Header from "./components/header";
 import Main from "./components/main/Main";
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 function App() {
   return (
     <Wrapper>
-    <Header/>
-    <Main/>
+      <Header />
+      <Main />
     </Wrapper>
   );
 }

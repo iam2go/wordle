@@ -1,4 +1,4 @@
-export const WORDS = `ㅇㅕㄱㄱㅏ
+export const WORDS = `
 ㅅㅣㄱㅊㅗ
 ㄱㅗㅇㅈㅓ
 ㄷㅏㄴㅇㅓ
