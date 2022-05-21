@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useRecoilState } from "recoil";
+import { wordState } from "recoil/wordle";
 import styled from "styled-components";
-import { changeWord, wordSelector } from "../../../store/slice";
 import Key from "./Key";
 
 function Keyboard() {
@@ -10,28 +10,26 @@ function Keyboard() {
   const thirdCol = "ㅋㅌㅊㅍㅠㅜㅡ";
 
   //const [result, setResult] = useState("");
-  const dispatch = useDispatch();
-  const word = useSelector(wordSelector);
+  const [word, setWord] = useRecoilState(wordState);
 
   const onClick = useCallback(
     (value: string) => {
       // setResult(prevText => prevText + value);
       if (word.length >= 5) return;
-      dispatch(changeWord(word + value));
+      setWord(word + value);
     },
-    [dispatch, word]
+    [setWord, word]
   );
 
   const onClickDelete = useCallback(() => {
-    // setResult(prevText => prevText.slice(0, -1))
-    dispatch(changeWord(word.slice(0, -1)));
-  }, [dispatch, word]);
+    setWord(word.slice(0, -1));
+  }, [setWord, word]);
 
   const onClickEnter = useCallback(() => {
     if (word.length === 5) {
-      dispatch(changeWord(""));
+      setWord("");
     }
-  }, [dispatch, word]);
+  }, [setWord, word]);
 
   return (
     <KeyboardWrap>

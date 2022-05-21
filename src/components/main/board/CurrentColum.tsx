@@ -1,11 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { wordSelector } from "../../../store/slice";
+import { useRecoilValue } from "recoil";
+import { wordState } from "recoil/wordle";
 import styled from "styled-components";
 import Square from "./Square";
 
 function CurrentColum() {
-  const word = useSelector(wordSelector);
+  const word = useRecoilValue(wordState);
   const emptySquareCount = 5 - word.length;
   return (
     <ColumWrap>
