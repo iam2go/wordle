@@ -20,7 +20,7 @@ const SquareWrap = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 500;
 `;
 
 export default Square;

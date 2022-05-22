@@ -15,7 +15,8 @@ const HeaderStyle = styled.div`
   align-items: center;
   justify-content: center;
   h1 {
-    font-size: 2.8rem;
+    font-size: 3.4rem;
+    font-weight: 600;
   }
 `;
 
