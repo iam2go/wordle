@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
-import { useRecoilState } from "recoil";
-import { wordState } from "recoil/wordle";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { wordListState, wordState } from "recoil/wordle";
 import styled from "styled-components";
 import Key from "./Key";
 
@@ -11,6 +11,7 @@ function Keyboard() {
 
   //const [result, setResult] = useState("");
   const [word, setWord] = useRecoilState(wordState);
+  const setWordList = useSetRecoilState(wordListState);
 
   const onClick = useCallback(
     (value: string) => {
@@ -27,13 +28,14 @@ function Keyboard() {
 
   const onClickEnter = useCallback(() => {
     if (word.length === 5) {
+      setWordList((prev) => [...prev, word]);
       setWord("");
     }
-  }, [setWord, word]);
+  }, [setWord, setWordList, word]);
 
   return (
     <KeyboardWrap>
-      <ResultBox>{word}</ResultBox>
+      {/* <ResultBox>{word}</ResultBox> */}
       <Col>
         {firstCol.split("").map((value) => (
           <Key key={value} value={value} onClick={onClick} />

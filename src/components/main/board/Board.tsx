@@ -1,17 +1,23 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { wordListState } from "recoil/wordle";
 import styled from "styled-components";
+import CompletedColum from "./CompletedColum";
 import CurrentColum from "./CurrentColum";
 import EmptyColum from "./EmptyColum";
 
 function Board() {
+  const wordList = useRecoilValue(wordListState);
+
   return (
     <BoardWrap>
-      <CurrentColum />
-      <EmptyColum />
-      <EmptyColum />
-      <EmptyColum />
-      <EmptyColum />
-      <EmptyColum />
+      {wordList.map((word, i) => (
+        <CompletedColum key={i} word={word} />
+      ))}
+      {wordList.length < 6 && <CurrentColum />}
+      {Array.from({ length: 5 - wordList.length }, (_, i) => (
+        <EmptyColum key={i} />
+      ))}
     </BoardWrap>
   );
 }
