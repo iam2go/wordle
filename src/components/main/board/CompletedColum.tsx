@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import Square from "./Square";
+import { WordWithStatus } from "../../../utils/status";
 
 type Props = {
-  word: string;
+  word: WordWithStatus;
 };
 
 function CompletedColum({ word }: Props) {
   return (
     <ColumWrap>
-      {word.split("").map((value: string, i: number) => (
-        <Square key={i} value={value} />
+      {Object.keys(word).map((value: string, i: number) => (
+        <Square key={i} value={value} status={word[value]} />
       ))}
     </ColumWrap>
   );

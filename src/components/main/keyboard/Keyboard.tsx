@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { wordListState, wordState } from "recoil/wordle";
 import styled from "styled-components";
+import { getStatus } from "utils/status";
 import Key from "./Key";
 
 function Keyboard() {
@@ -28,7 +29,7 @@ function Keyboard() {
 
   const onClickEnter = useCallback(() => {
     if (word.length === 5) {
-      setWordList((prev) => [...prev, word]);
+      setWordList((prev) => [...prev, getStatus(word)]);
       setWord("");
     }
   }, [setWord, setWordList, word]);
