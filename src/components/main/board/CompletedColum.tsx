@@ -4,14 +4,15 @@ import Square from "./Square";
 import { WordWithStatus } from "../../../utils/status";
 
 type Props = {
-  word: WordWithStatus;
+  word: WordWithStatus[];
 };
 
 function CompletedColum({ word }: Props) {
+  console.log(word);
   return (
     <ColumWrap>
-      {Object.keys(word).map((value: string, i: number) => (
-        <Square key={i} value={value} status={word[value]} />
+      {word.map((char: WordWithStatus, i: number) => (
+        <Square key={i} value={char.value} status={char.status} />
       ))}
     </ColumWrap>
   );

@@ -6,7 +6,7 @@ export const wordState = atom<string>({
   default: "",
 });
 
-export const wordListState = atom<WordWithStatus[]>({
+export const wordListState = atom<WordWithStatus[][]>({
   key: "wordListState",
   default: [],
 });

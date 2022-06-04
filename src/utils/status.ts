@@ -1,23 +1,34 @@
 import { answer } from "./word";
 
-export type WordWithStatus = {
+export type CharWithStatus = {
   [key: string]: CharStatus;
 };
+
+export type WordWithStatus = {
+  value: string;
+  status: CharStatus;
+};
+
 export type CharStatus = "absent" | "present" | "correct";
 
 export const getStatus = (word: string) => {
-  let charStatus: WordWithStatus = {};
-  console.log(answer);
-  word.split("").forEach((char, i) => {
+  let charStatus: CharWithStatus = {};
+
+  const wordStatus = word.split("").map((char, i): WordWithStatus => {
+    let status: CharStatus = "present";
     if (!answer.includes(char)) {
-      return (charStatus[char] = "absent");
+      charStatus[char] = "absent";
+      status = "absent";
     }
     if (char === answer[i]) {
-      return (charStatus[char] = "correct");
+      charStatus[char] = "correct";
+      status = "correct";
     }
-
-    return (charStatus[char] = "present");
+    if (charStatus[char] !== "correct") {
+      charStatus[char] = "present";
+    }
+    return { value: char, status };
   });
 
-  return charStatus;
+  return { charStatus, wordStatus };
 };

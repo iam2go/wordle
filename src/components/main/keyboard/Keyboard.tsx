@@ -29,7 +29,8 @@ function Keyboard() {
 
   const onClickEnter = useCallback(() => {
     if (word.length === 5) {
-      setWordList((prev) => [...prev, getStatus(word)]);
+      const { charStatus, wordStatus } = getStatus(word);
+      setWordList((prev) => [...prev, wordStatus]);
       setWord("");
     }
   }, [setWord, setWordList, word]);
