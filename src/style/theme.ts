@@ -2,7 +2,7 @@ import baseStyled, { ThemedStyledInterface } from "styled-components";
 
 export const theme = {
   color: {
-    correct: "#219ebc",
+    correct: "#54b2b2",
     present: "#fdc500",
     absent: "#9a9a9a",
   },

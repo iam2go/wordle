@@ -8,7 +8,6 @@ type Props = {
 };
 
 function CompletedColum({ word }: Props) {
-  console.log(word);
   return (
     <ColumWrap>
       {word.map((char: WordWithStatus, i: number) => (

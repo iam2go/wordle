@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { wordListState, wordState } from "recoil/wordle";
+import { charState, wordListState, wordState } from "recoil/wordle";
 import styled from "styled-components";
 import { getStatus } from "utils/status";
 import Key from "./Key";
@@ -12,6 +12,7 @@ function Keyboard() {
 
   //const [result, setResult] = useState("");
   const [word, setWord] = useRecoilState(wordState);
+  const [keyStatus, setKeyStatus] = useRecoilState(charState);
   const setWordList = useSetRecoilState(wordListState);
 
   const onClick = useCallback(
@@ -30,28 +31,44 @@ function Keyboard() {
   const onClickEnter = useCallback(() => {
     if (word.length === 5) {
       const { charStatus, wordStatus } = getStatus(word);
+      setKeyStatus({ ...keyStatus, ...charStatus });
       setWordList((prev) => [...prev, wordStatus]);
       setWord("");
     }
-  }, [setWord, setWordList, word]);
+  }, [keyStatus, setKeyStatus, setWord, setWordList, word]);
 
   return (
     <KeyboardWrap>
       {/* <ResultBox>{word}</ResultBox> */}
       <Col>
         {firstCol.split("").map((value) => (
-          <Key key={value} value={value} onClick={onClick} />
+          <Key
+            key={value}
+            value={value}
+            status={keyStatus[value]}
+            onClick={onClick}
+          />
         ))}
       </Col>
       <Col>
         {secondCol.split("").map((value) => (
-          <Key key={value} value={value} onClick={onClick} />
+          <Key
+            key={value}
+            value={value}
+            status={keyStatus[value]}
+            onClick={onClick}
+          />
         ))}
         <Key value="⌫" width={9} onClick={onClickDelete} />
       </Col>
       <Col>
         {thirdCol.split("").map((value) => (
-          <Key key={value} value={value} onClick={onClick} />
+          <Key
+            key={value}
+            value={value}
+            status={keyStatus[value]}
+            onClick={onClick}
+          />
         ))}
         <Key value="ENTER" width={10} onClick={onClickEnter} />
       </Col>

@@ -19,12 +19,10 @@ export const getStatus = (word: string) => {
     if (!answer.includes(char)) {
       charStatus[char] = "absent";
       status = "absent";
-    }
-    if (char === answer[i]) {
+    } else if (char === answer[i]) {
       charStatus[char] = "correct";
       status = "correct";
-    }
-    if (charStatus[char] !== "correct") {
+    } else if (charStatus[char] !== "correct") {
       charStatus[char] = "present";
     }
     return { value: char, status };
