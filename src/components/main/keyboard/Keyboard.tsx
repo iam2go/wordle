@@ -1,3 +1,4 @@
+import Toast from "components/modals/Toast";
 import React, { useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { charState, wordListState, wordState } from "recoil/wordle";
