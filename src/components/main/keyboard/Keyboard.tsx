@@ -21,7 +21,6 @@ function Keyboard() {
     (value: string) => {
       // setResult(prevText => prevText + value);
       if (word.length >= 5) {
-        Toast.error("글자 수를 초과하였습니다.");
         return;
       }
       setWord(word + value);

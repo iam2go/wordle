@@ -30,7 +30,14 @@ function Toast() {
 
   const { open, type, message } = status;
   return transitions(({ ...style }, open) =>
-    open ? <ToastWrap style={style}>{message}</ToastWrap> : <></>
+    open ? (
+      <ToastWrap style={style}>
+        <i className="fa-solid fa-circle-exclamation"></i>
+        {message}
+      </ToastWrap>
+    ) : (
+      <></>
+    )
   );
 }
 
@@ -80,6 +87,10 @@ const ToastWrap = styled(animated.div)`
   font-weight: 600;
   padding: 1.6rem 4rem;
   border-radius: 1rem;
+  i {
+    font-size: 16px;
+    margin-right: 0.8rem;
+  }
 `;
 
 export default Toast;
