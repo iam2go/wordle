@@ -1,5 +1,6 @@
 import Toast from "components/modals/Toast";
-import React, { useCallback } from "react";
+import { WORDS } from "constants/words";
+import React, { useCallback, useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { charState, wordListState, wordState } from "recoil/wordle";
 import styled from "styled-components";
@@ -19,7 +20,10 @@ function Keyboard() {
   const onClick = useCallback(
     (value: string) => {
       // setResult(prevText => prevText + value);
-      if (word.length >= 5) return;
+      if (word.length >= 5) {
+        Toast.error("글자 수를 초과하였습니다.");
+        return;
+      }
       setWord(word + value);
     },
     [setWord, word]
@@ -31,6 +35,10 @@ function Keyboard() {
 
   const onClickEnter = useCallback(() => {
     if (word.length === 5) {
+      if (!WORDS.includes(word)) {
+        Toast.error("해당 단어를 찾을 수 없습니다.");
+        return;
+      }
       const { charStatus, wordStatus } = getStatus(word);
       setKeyStatus({ ...keyStatus, ...charStatus });
       setWordList((prev) => [...prev, wordStatus]);
