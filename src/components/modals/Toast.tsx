@@ -1,12 +1,35 @@
 import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { useTransition, animated } from "react-spring";
+import cn from "classnames";
 
 type ToastStatus = {
   open: boolean;
-  type: "success" | "warning" | "error";
+  type: ToastType;
   message: string;
 };
+
+type StyleProp = {
+  type: ToastType;
+};
+
+type ToastType = "success" | "warning" | "error";
+
+const color = {
+  error: {
+    text: "#cf0101",
+    background: "#ffcece",
+  },
+  warning: {
+    text: "#fcb119",
+    background: "#fff3d4",
+  },
+  success: {
+    text: "#3fbf6e",
+    background: "#d5f5e1",
+  },
+} as const;
+
 function Toast() {
   const [status, setStatus] = useState<ToastStatus>(defaultProps);
   const transitions = useTransition(status.open, {
@@ -28,11 +51,18 @@ function Toast() {
     Toast.setStatus = setStatus;
   }, []);
 
-  const { open, type, message } = status;
+  const { type, message } = status;
   return transitions(({ ...style }, open) =>
     open ? (
-      <ToastWrap style={style}>
-        <i className="fa-solid fa-circle-exclamation"></i>
+      <ToastWrap style={style} type={type}>
+        <i
+          className={cn(
+            "fa-solid",
+            { "fa-circle-exclamation": type === "error" },
+            { "fa-triangle-exclamation": type === "warning" },
+            { "fa-circle-check": type === "success" }
+          )}
+        ></i>
         {message}
       </ToastWrap>
     ) : (
@@ -75,14 +105,14 @@ const defaultProps: ToastStatus = {
 
 Toast.defaultProps = defaultProps;
 
-const ToastWrap = styled(animated.div)`
+const ToastWrap = styled(animated.div)<StyleProp>`
   position: fixed;
   top: 12%;
   left: 50%;
   transform: translate(-50%, 0);
   height: fit-content;
-  background-color: #ffcece;
-  color: #cf0101;
+  background-color: ${({ type }) => color[type].background};
+  color: ${({ type }) => color[type].text};
   font-size: 14px;
   font-weight: 600;
   padding: 1.6rem 4rem;

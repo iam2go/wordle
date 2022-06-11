@@ -1,6 +1,6 @@
 import Toast from "components/modals/Toast";
 import { WORDS } from "constants/words";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   charState,
