@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Square from "./Square";
 import { WordWithStatus } from "../../../utils/status";
+import { useSetRecoilState } from "recoil";
+import { gameStatusState } from "recoil/wordle";
+import Toast from "components/modals/Toast";
 
 type Props = {
   word: WordWithStatus[];
 };
 
 function CompletedColum({ word }: Props) {
+  const setGameStatus = useSetRecoilState(gameStatusState);
+
+  useEffect(() => {
+    if (word.every(({ status }) => status === "correct")) {
+      setGameStatus("WIN");
+      Toast.success("정답입니다");
+    }
+  }, [setGameStatus, word]);
   return (
     <ColumWrap>
       {word.map((char: WordWithStatus, i: number) => (

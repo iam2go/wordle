@@ -9,6 +9,7 @@ export type WordWithStatus = {
   status: CharStatus;
 };
 
+export type gameStatus = "IN_PROGRESS" | "WIN" | "LOSE";
 export type CharStatus = "absent" | "present" | "correct";
 
 export const getStatus = (word: string) => {

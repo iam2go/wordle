@@ -1,8 +1,13 @@
 import Toast from "components/modals/Toast";
 import { WORDS } from "constants/words";
 import React, { useCallback, useEffect } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { charState, wordListState, wordState } from "recoil/wordle";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  charState,
+  gameStatusState,
+  wordListState,
+  wordState,
+} from "recoil/wordle";
 import styled from "styled-components";
 import { getStatus } from "utils/status";
 import Key from "./Key";
@@ -16,16 +21,17 @@ function Keyboard() {
   const [word, setWord] = useRecoilState(wordState);
   const [keyStatus, setKeyStatus] = useRecoilState(charState);
   const setWordList = useSetRecoilState(wordListState);
+  const gameStatus = useRecoilValue(gameStatusState);
 
   const onClick = useCallback(
     (value: string) => {
       // setResult(prevText => prevText + value);
-      if (word.length >= 5) {
+      if (word.length >= 5 || gameStatus === "WIN") {
         return;
       }
       setWord(word + value);
     },
-    [setWord, word]
+    [gameStatus, setWord, word]
   );
 
   const onClickDelete = useCallback(() => {
