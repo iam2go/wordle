@@ -48,7 +48,7 @@ const Overlay = styled.div`
 `;
 
 const ModalWrap = styled.div`
-  width: 40rem;
+  width: 42rem;
   height: fit-content;
   border-radius: 15px;
   background-color: #fff;
@@ -74,16 +74,7 @@ const CloseButton = styled.div`
 
 const Contents = styled.div`
   /* background-color: aquamarine; */
-  margin: 50px 30px;
-  h1 {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 60px;
-  }
-  img {
-    margin-top: 60px;
-    width: 300px;
-  }
+  margin: 5rem 4rem;
 `;
 
 export default Dialog;
