@@ -15,6 +15,7 @@ export const getWordOfDay = () => {
   // const { elapsed, msInDay } = gameTimeInMs();
   // const index = Math.floor(elapsed / msInDay);
   const index = Math.floor(Math.random() * 38696);
+  console.log(WORDS[index]);
   return {
     answer: WORDS[index],
   };

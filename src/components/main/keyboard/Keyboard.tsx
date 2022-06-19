@@ -1,6 +1,6 @@
 import Toast from "components/modals/Toast";
 import { WORDS } from "constants/words";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   charState,
@@ -9,7 +9,7 @@ import {
   wordState,
 } from "recoil/wordle";
 import styled from "styled-components";
-import { getStatus } from "utils/status";
+import { charList, getStatus } from "utils/status";
 import Key from "./Key";
 
 function Keyboard() {
@@ -50,6 +50,24 @@ function Keyboard() {
       setWord("");
     }
   }, [keyStatus, setKeyStatus, setWord, setWordList, word]);
+
+  useEffect(() => {
+    const listener = (e: KeyboardEvent) => {
+      if (e.code === "Enter") {
+        onClickEnter();
+      } else if (e.code === "Backspace") {
+        onClickDelete();
+      } else {
+        if (e.key.length === 1 && charList.includes(e.key)) {
+          onClick(e.key);
+        }
+      }
+    };
+    window.addEventListener("keyup", listener);
+    return () => {
+      window.removeEventListener("keyup", listener);
+    };
+  }, [onClickEnter, onClickDelete, onClick]);
 
   return (
     <KeyboardWrap>

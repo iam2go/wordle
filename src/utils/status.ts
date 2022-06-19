@@ -12,6 +12,8 @@ export type WordWithStatus = {
 export type gameStatus = "IN_PROGRESS" | "WIN" | "LOSE";
 export type CharStatus = "absent" | "present" | "correct";
 
+export const charList =
+  "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔㅁㄴㅇㄹㅎㅗㅓㅏㅣㅋㅌㅊㅍㅠㅜㅡ".split("");
 export const getStatus = (word: string) => {
   let charStatus: CharWithStatus = {};
 
