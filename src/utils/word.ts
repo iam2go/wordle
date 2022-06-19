@@ -12,9 +12,17 @@ export const gameTimeInMs = () => {
 };
 
 export const getWordOfDay = () => {
+  const key = "gameSolution";
+  const savedValue = localStorage.getItem(key);
+  let index;
+  if (!savedValue) {
+    index = Math.floor(Math.random() * 38696);
+    localStorage.setItem(key, JSON.stringify(index));
+  } else {
+    index = parseInt(savedValue);
+  }
   // const { elapsed, msInDay } = gameTimeInMs();
   // const index = Math.floor(elapsed / msInDay);
-  const index = Math.floor(Math.random() * 38696);
   console.log(WORDS[index]);
   return {
     answer: WORDS[index],
