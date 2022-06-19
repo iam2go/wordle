@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "../../../style/theme";
 import { CharStatus } from "../../../utils/status";
 import cn from "classnames";
+import { useSpring, animated } from "react-spring";
 
 type Props = {
   value?: string;
@@ -10,14 +11,19 @@ type Props = {
 
 type StyleProps = {
   hasValue: boolean;
-  color?: CharStatus;
+  colors?: CharStatus;
 };
 
 function Square({ value = "", status }: Props) {
+  const animateProps = useSpring({
+    to: { scale: 1 },
+    from: { scale: value !== "" ? 1.1 : 1 },
+  });
   return (
     <SquareWrap
+      style={animateProps}
       hasValue={value !== ""}
-      color={status}
+      colors={status}
       className={cn({ on: status })}
     >
       {value}
@@ -25,7 +31,7 @@ function Square({ value = "", status }: Props) {
   );
 }
 
-const SquareWrap = styled.div<StyleProps>`
+const SquareWrap = styled(animated.div)<StyleProps>`
   width: 5.5rem;
   height: 5.5rem;
   border-radius: 1rem;
@@ -37,10 +43,11 @@ const SquareWrap = styled.div<StyleProps>`
   align-items: center;
   font-size: 1.8rem;
   font-weight: 500;
+  transform: scale(1);
   border-color: ${({ hasValue }) => (hasValue ? "black" : "#cdcdcd")};
   &.on {
-    background-color: ${({ theme, color }) => color && theme.color[color]};
-    border-color: ${({ theme, color }) => color && theme.color[color]};
+    background-color: ${({ theme, colors }) => colors && theme.color[colors]};
+    border-color: ${({ theme, colors }) => colors && theme.color[colors]};
     color: white;
   }
 `;
