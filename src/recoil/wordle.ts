@@ -19,7 +19,6 @@ const localStorageEffect =
     if (savedValue !== null) {
       setSelf(JSON.parse(savedValue));
     }
-
     onSet(
       (
         newValue: WordWithStatus[][],

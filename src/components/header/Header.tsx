@@ -4,9 +4,13 @@ import { modalSelector } from "recoil/modal";
 import styled from "styled-components";
 
 function Header() {
-  const setModalState = useSetRecoilState(modalSelector("info"));
+  const setInfoModalState = useSetRecoilState(modalSelector("info"));
+  const setStatModalState = useSetRecoilState(modalSelector("stats"));
   const onClickInfo = () => {
-    setModalState(true);
+    setInfoModalState(true);
+  };
+  const onClickStat = () => {
+    setStatModalState(true);
   };
 
   return (
@@ -15,6 +19,9 @@ function Header() {
         <i className="fa-solid fa-circle-info"></i>
       </InfoButton>
       <h1>Wordle</h1>
+      <StatButton onClick={onClickStat}>
+        <i className="fa-solid fa-chart-simple"></i>
+      </StatButton>
     </HeaderStyle>
   );
 }
@@ -32,6 +39,14 @@ const HeaderStyle = styled.div`
 `;
 
 const InfoButton = styled.div`
+  float: left;
+  cursor: pointer;
+  i {
+    font-size: 20px;
+  }
+`;
+
+const StatButton = styled.div`
   float: left;
   cursor: pointer;
   i {

@@ -12,6 +12,9 @@ export const modalState = atom<ModalState>({
     info: {
       isOpen: false,
     },
+    stats: {
+      isOpen: false,
+    },
   },
 });
 
