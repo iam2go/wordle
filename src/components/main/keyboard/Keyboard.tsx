@@ -26,7 +26,7 @@ function Keyboard() {
   const onClick = useCallback(
     (value: string) => {
       // setResult(prevText => prevText + value);
-      if (word.length >= 5 || gameStatus === "WIN") {
+      if (word.length >= 5 || gameStatus !== "IN_PROGRESS") {
         return;
       }
       setWord(word + value);

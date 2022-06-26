@@ -12,7 +12,7 @@ function Board() {
   return (
     <BoardWrap>
       {wordList.map((word, i) => (
-        <CompletedColum key={i} word={word} />
+        <CompletedColum key={i} word={word} isLast={i === 5} />
       ))}
       {wordList.length < 6 && <CurrentColum />}
       {Array.from({ length: 5 - wordList.length }, (_, i) => (

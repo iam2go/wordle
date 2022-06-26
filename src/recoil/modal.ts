@@ -15,6 +15,12 @@ export const modalState = atom<ModalState>({
     stats: {
       isOpen: false,
     },
+    win: {
+      isOpen: false,
+    },
+    lose: {
+      isOpen: false,
+    },
   },
 });
 

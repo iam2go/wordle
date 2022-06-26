@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useRecoilValue } from "recoil";
 import { modalState } from "recoil/modal";
 import GameInfoDialog from "./GameInfoDialog";
+import GameResultDialog from "./GameResultDialog";
 import GameStatsDialog from "./GameStatsDialog";
 import Toast from "./Toast";
 
@@ -13,6 +14,8 @@ function ModalContainer() {
     <>
       {modal["info"].isOpen && <GameInfoDialog />}
       {modal["stats"].isOpen && <GameStatsDialog />}
+      {modal["win"].isOpen && <GameResultDialog state="win" />}
+      {modal["lose"].isOpen && <GameResultDialog state="lose" />}
       <Toast />
     </>,
     element
