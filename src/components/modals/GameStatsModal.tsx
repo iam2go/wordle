@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { loadStats } from "utils/stats";
-import Dialog from "./Dialog";
+import Modal from "./Modal";
 
 type Props = {
   text: string;
@@ -16,7 +16,7 @@ function Stat({ text, value }: Props) {
   );
 }
 
-function GameStatsDialog() {
+function GameStatsModal() {
   const {
     winDistribution,
     currentStreak,
@@ -25,7 +25,7 @@ function GameStatsDialog() {
     successRate,
   } = loadStats();
   return (
-    <Dialog id="stats">
+    <Modal id="stats">
       <Wrap>
         <h2> 통계 </h2>
         <StatTable>
@@ -46,7 +46,7 @@ function GameStatsDialog() {
           </ChartBox>
         ))}
       </Wrap>
-    </Dialog>
+    </Modal>
   );
 }
 
@@ -97,4 +97,4 @@ const Chart = styled.span<ChartStyle>`
   }
 `;
 
-export default GameStatsDialog;
+export default GameStatsModal;

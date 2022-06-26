@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Square from "./Square";
 import { WordWithStatus } from "../../../utils/status";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { gameStatusState } from "recoil/wordle";
-import Toast from "components/modals/Toast";
+import useModal from "components/modals/hooks/useModal";
 
 type Props = {
   word: WordWithStatus[];
@@ -12,19 +12,23 @@ type Props = {
 };
 
 function CompletedColum({ word, isLast }: Props) {
-  const setGameStatus = useSetRecoilState(gameStatusState);
+  const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
+  const WinModal = useModal("win");
+  const LoseModal = useModal("lose");
 
   useEffect(() => {
+    if (gameStatus !== "IN_PROGRESS") return;
     if (word.every(({ status }) => status === "correct")) {
       setGameStatus("WIN");
-      Toast.success("정답입니다");
+      WinModal.open();
       return;
     }
 
     if (isLast) {
       setGameStatus("LOSE");
+      LoseModal.open();
     }
-  }, [isLast, setGameStatus, word]);
+  }, [LoseModal, WinModal, gameStatus, isLast, setGameStatus, word]);
 
   return (
     <ColumWrap>

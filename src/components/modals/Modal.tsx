@@ -1,19 +1,18 @@
 import useOutSideClick from "hooks/useOutSideClick";
 import React, { ReactNode, useEffect, useRef } from "react";
-import { useSetRecoilState } from "recoil";
-import { modalSelector } from "recoil/modal";
 import styled from "styled-components";
+import useModal from "./hooks/useModal";
 
 type Props = {
   id: string;
   children: ReactNode;
 };
 
-function Dialog({ id, children }: Props) {
+function Modal({ id, children }: Props) {
   const dialogRef = useRef(null);
-  const setModalState = useSetRecoilState(modalSelector(id));
+  const modalContainer = useModal(id);
   const handleClose = () => {
-    setModalState(false);
+    modalContainer.close();
   };
 
   useOutSideClick(dialogRef, handleClose);
@@ -77,4 +76,4 @@ const Contents = styled.div`
   margin: 5rem 4rem;
 `;
 
-export default Dialog;
+export default Modal;

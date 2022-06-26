@@ -1,16 +1,15 @@
 import React from "react";
-import { useSetRecoilState } from "recoil";
-import { modalSelector } from "recoil/modal";
 import styled from "styled-components";
+import useModal from "components/modals/hooks/useModal";
 
 function Header() {
-  const setInfoModalState = useSetRecoilState(modalSelector("info"));
-  const setStatModalState = useSetRecoilState(modalSelector("stats"));
+  const InfoModal = useModal("info");
+  const StatModal = useModal("stats");
   const onClickInfo = () => {
-    setInfoModalState(true);
+    InfoModal.open();
   };
   const onClickStat = () => {
-    setStatModalState(true);
+    StatModal.open();
   };
 
   return (

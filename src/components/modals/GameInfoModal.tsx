@@ -1,14 +1,14 @@
 import React from "react";
-import Dialog from "./Dialog";
+import Modal from "./Modal";
 import styled from "styled-components";
 import Square from "components/main/board/Square";
 
-function GameInfoDialog() {
+function GameInfoModal() {
   const correctExample = "ㅇㅣㄹㅡㅁ";
   const presentExample = "ㅎㅏㄴㅡㄹ";
   const absentExample = "ㅅㅏㄱㅗㅏ";
   return (
-    <Dialog id="info">
+    <Modal id="info">
       <Wrap>
         <h2> 게임 방법</h2>
         <p>
@@ -57,7 +57,7 @@ function GameInfoDialog() {
         </ColumWrap>
         글자 <strong>"ㅗ"</strong>는 단어에 포함되지않습니다.
       </Examples>
-    </Dialog>
+    </Modal>
   );
 }
 
@@ -91,4 +91,4 @@ const ColumWrap = styled.div`
   margin-bottom: 0.2rem;
 `;
 
-export default GameInfoDialog;
+export default GameInfoModal;

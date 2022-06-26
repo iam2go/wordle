@@ -1,6 +1,6 @@
 import React from "react";
 import App from "./App";
-import ModalContainer from "./components/modals/ModalContainer";
+import PortalContainer from "./components/modals/PortalContainer";
 import GlobalStyle from "./style/GlobalStyle";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
@@ -12,7 +12,7 @@ function Root() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <App />
-        <ModalContainer />
+        <PortalContainer />
       </ThemeProvider>
     </RecoilRoot>
   );

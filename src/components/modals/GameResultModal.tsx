@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { wordListState } from "recoil/wordle";
-import Dialog from "./Dialog";
+import Modal from "./Modal";
 import { styled } from "style/theme";
 import { CharStatus } from "utils/status";
 import cn from "classnames";
@@ -16,7 +16,7 @@ type StyleProps = {
   colors?: CharStatus;
 };
 
-function GameResultDialog({ state }: Props) {
+function GameResultModal({ state }: Props) {
   const wordList = useRecoilValue(wordListState);
 
   useEffect(() => {
@@ -24,21 +24,21 @@ function GameResultDialog({ state }: Props) {
   }, [state, wordList.length]);
 
   return (
-    <Dialog id={state}>
+    <Modal id={state}>
       <h2> {state === "win" ? "정답입니다!" : "실패!"}</h2>
       {/* {state === "LOSE" && `정답은 "${answer}"입니다`} */}
       {wordList.map((word, i) => (
         <ColumWrap>
           {word.map((char, index) => (
             <Square
-              key={i}
+              key={i + "+" + index}
               className={cn({ on: char.status !== "absent" })}
               colors={char.status}
             />
           ))}
         </ColumWrap>
       ))}
-    </Dialog>
+    </Modal>
   );
 }
 
@@ -60,4 +60,4 @@ const Square = styled.div<StyleProps>`
   }
 `;
 
-export default GameResultDialog;
+export default GameResultModal;
