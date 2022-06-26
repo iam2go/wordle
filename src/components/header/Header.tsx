@@ -1,26 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 import useModal from "components/modals/hooks/useModal";
+import { useResetRecoilState } from "recoil";
+import { wordListState } from "recoil/wordle";
+import { resetWord } from "utils/word";
 
 function Header() {
   const InfoModal = useModal("info");
   const StatModal = useModal("stats");
+  const resetWordList = useResetRecoilState(wordListState);
   const onClickInfo = () => {
     InfoModal.open();
   };
   const onClickStat = () => {
     StatModal.open();
   };
+  const onClickReStart = () => {
+    resetWordList();
+    resetWord();
+  };
 
   return (
     <HeaderStyle>
-      <InfoButton onClick={onClickInfo}>
+      <Button onClick={onClickInfo}>
         <i className="fa-solid fa-circle-info"></i>
-      </InfoButton>
+      </Button>
       <h1>Wordle</h1>
-      <StatButton onClick={onClickStat}>
+      <Button onClick={onClickStat}>
         <i className="fa-solid fa-chart-simple"></i>
-      </StatButton>
+      </Button>
+      <Button onClick={onClickReStart}>
+        <i className="fa-solid fa-arrow-rotate-left"></i>
+      </Button>
     </HeaderStyle>
   );
 }
@@ -37,19 +48,13 @@ const HeaderStyle = styled.div`
   }
 `;
 
-const InfoButton = styled.div`
+const Button = styled.div`
   float: left;
+  margin-right: 1.5rem;
   cursor: pointer;
   i {
     font-size: 20px;
   }
 `;
 
-const StatButton = styled.div`
-  float: left;
-  cursor: pointer;
-  i {
-    font-size: 20px;
-  }
-`;
 export default Header;

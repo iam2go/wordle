@@ -11,8 +11,14 @@ export const gameTimeInMs = () => {
   };
 };
 
+const key = "gameSolution";
+
+export const resetWord = () => {
+  localStorage.removeItem(key);
+  getWordOfDay();
+};
+
 export const getWordOfDay = () => {
-  const key = "gameSolution";
   const savedValue = localStorage.getItem(key);
   let index;
   if (!savedValue) {
