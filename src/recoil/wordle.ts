@@ -1,36 +1,30 @@
-import { atom } from "recoil";
+import { atom, AtomEffect } from "recoil";
 import { CharWithStatus, WordWithStatus } from "../utils/status";
+
+const localStorageEffect: <T>(key: string) => AtomEffect<T> =
+  (key: string) =>
+  ({ setSelf, onSet }) => {
+    const savedValue = localStorage.getItem(key);
+    if (savedValue !== null) {
+      setSelf(JSON.parse(savedValue));
+    }
+    onSet((newValue, _, isReset) => {
+      isReset
+        ? localStorage.removeItem(key)
+        : localStorage.setItem(key, JSON.stringify(newValue));
+    });
+  };
 
 export const gameStatusState = atom<string>({
   key: "gameStatusState",
   default: "IN_PROGRESS",
+  effects: [localStorageEffect("gameStatus")],
 });
 
 export const wordState = atom<string>({
   key: "wordState",
   default: "",
 });
-
-const localStorageEffect =
-  (key: string) =>
-  // FIXME: 타입 임시처리
-  ({ setSelf, onSet }: { setSelf: any; onSet: any }) => {
-    const savedValue = localStorage.getItem(key);
-    if (savedValue !== null) {
-      setSelf(JSON.parse(savedValue));
-    }
-    onSet(
-      (
-        newValue: WordWithStatus[][],
-        _: WordWithStatus[][],
-        isReset: boolean
-      ) => {
-        isReset
-          ? localStorage.removeItem(key)
-          : localStorage.setItem(key, JSON.stringify(newValue));
-      }
-    );
-  };
 
 export const wordListState = atom<WordWithStatus[][]>({
   key: "wordListState",
