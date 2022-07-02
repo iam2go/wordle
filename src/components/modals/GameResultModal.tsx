@@ -9,6 +9,7 @@ import useResetState from "hooks/useResetState";
 // import { answer } from "utils/word";
 import { addStatsForCompletedGame } from "utils/stats";
 import useModal from "./hooks/useModal";
+import { shareStatus } from "utils/share";
 
 type Props = {
   state: "win" | "lose";
@@ -26,6 +27,10 @@ function GameResultModal({ state }: Props) {
   const onClickRestart = () => {
     onReset();
     modalContainer.close();
+  };
+
+  const onClickShare = () => {
+    shareStatus(wordList);
   };
 
   useEffect(() => {
@@ -50,7 +55,7 @@ function GameResultModal({ state }: Props) {
         ))}
       </ResultBox>
       <Button onClick={onClickRestart}>새로운 게임 시작하기</Button>
-      <Button> 클립보드에 복사하기</Button>
+      <Button onClick={onClickShare}> 클립보드에 복사하기</Button>
     </Modal>
   );
 }
