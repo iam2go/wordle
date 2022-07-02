@@ -28,7 +28,7 @@ function GameResultModal({ state }: Props) {
       <h2> {state === "win" ? "정답입니다!" : "실패!"}</h2>
       {/* {state === "LOSE" && `정답은 "${answer}"입니다`} */}
       {wordList.map((word, i) => (
-        <ColumWrap>
+        <ColumWrap key={i}>
           {word.map((char, index) => (
             <Square
               key={i + "+" + index}

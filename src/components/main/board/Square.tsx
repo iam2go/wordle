@@ -10,7 +10,7 @@ type Props = {
 };
 
 type StyleProps = {
-  hasValue: boolean;
+  value: boolean;
   colors?: CharStatus;
 };
 
@@ -22,7 +22,7 @@ function Square({ value = "", status }: Props) {
   return (
     <SquareWrap
       style={animateProps}
-      hasValue={value !== ""}
+      value={value !== ""}
       colors={status}
       className={cn({ on: status })}
     >
@@ -44,7 +44,7 @@ const SquareWrap = styled(animated.div)<StyleProps>`
   font-size: 1.8rem;
   font-weight: 500;
   transform: scale(1);
-  border-color: ${({ hasValue }) => (hasValue ? "black" : "#cdcdcd")};
+  border-color: ${({ value }) => (value ? "black" : "#cdcdcd")};
   &.on {
     background-color: ${({ theme, colors }) => colors && theme.color[colors]};
     border-color: ${({ theme, colors }) => colors && theme.color[colors]};

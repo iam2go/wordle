@@ -2,13 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import useModal from "components/modals/hooks/useModal";
 import { useResetRecoilState } from "recoil";
-import { wordListState } from "recoil/wordle";
+import { charState, gameStatusState, wordListState } from "recoil/wordle";
 import { resetWord } from "utils/word";
 
 function Header() {
   const InfoModal = useModal("info");
   const StatModal = useModal("stats");
   const resetWordList = useResetRecoilState(wordListState);
+  const resetGameStatus = useResetRecoilState(gameStatusState);
+  const resetCharStatus = useResetRecoilState(charState);
   const onClickInfo = () => {
     InfoModal.open();
   };
@@ -18,6 +20,8 @@ function Header() {
   const onClickReStart = () => {
     resetWordList();
     resetWord();
+    resetGameStatus();
+    resetCharStatus();
   };
 
   return (
