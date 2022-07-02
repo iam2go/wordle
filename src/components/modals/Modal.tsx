@@ -63,7 +63,7 @@ const CloseButton = styled.div`
   float: right;
   width: 4rem;
   height: 4rem;
-  margin: 2rem;
+  margin: 2rem 2rem 0rem 0rem;
   cursor: pointer;
   i {
     color: #5d5d5d;
@@ -73,7 +73,7 @@ const CloseButton = styled.div`
 
 const Contents = styled.div`
   /* background-color: aquamarine; */
-  margin: 5rem 4rem;
+  margin: 6rem 4rem;
 `;
 
 export default Modal;
