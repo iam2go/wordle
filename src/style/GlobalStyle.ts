@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body{
         font-family: 'Nunito','Pretendard', sans-serif;
+        margin: 0;
     }
     h2{
         font-size: 18px;

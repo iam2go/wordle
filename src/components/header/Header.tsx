@@ -11,6 +11,7 @@ function Header() {
   const resetWordList = useResetRecoilState(wordListState);
   const resetGameStatus = useResetRecoilState(gameStatusState);
   const resetCharStatus = useResetRecoilState(charState);
+
   const onClickInfo = () => {
     InfoModal.open();
   };
@@ -42,6 +43,7 @@ function Header() {
 
 const HeaderStyle = styled.div`
   height: 8rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
