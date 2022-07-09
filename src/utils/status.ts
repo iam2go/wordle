@@ -1,4 +1,4 @@
-import { answer } from "./word";
+import { getWordOfDay } from "./word";
 
 export type CharWithStatus = {
   [key: string]: CharStatus;
@@ -16,6 +16,7 @@ export const charList =
   "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔㅁㄴㅇㄹㅎㅗㅓㅏㅣㅋㅌㅊㅍㅠㅜㅡ".split("");
 export const getStatus = (word: string) => {
   let charStatus: CharWithStatus = {};
+  let answer = getWordOfDay();
 
   const wordStatus = word.split("").map((char, i): WordWithStatus => {
     let status: CharStatus = "present";

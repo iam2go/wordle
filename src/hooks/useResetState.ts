@@ -8,8 +8,8 @@ function useResetState() {
   const resetCharStatus = useResetRecoilState(charState);
 
   const onReset = () => {
-    resetWordList();
     resetWord();
+    resetWordList();
     resetGameStatus();
     resetCharStatus();
   };

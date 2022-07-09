@@ -11,6 +11,7 @@ import {
 import styled from "styled-components";
 import { charList, getStatus } from "utils/status";
 import Key from "./Key";
+import * as Hangul from "hangul-js";
 
 function Keyboard() {
   const firstCol = "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ";
@@ -71,7 +72,7 @@ function Keyboard() {
 
   return (
     <KeyboardWrap>
-      {/* <ResultBox>{word}</ResultBox> */}
+      <ResultBox>{Hangul.assemble(word.split(""))}</ResultBox>
       <Col>
         {firstCol.split("").map((value) => (
           <Key
