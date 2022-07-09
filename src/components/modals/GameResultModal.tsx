@@ -66,6 +66,16 @@ function GameResultModal({ state }: Props) {
 
   return (
     <Modal id={state}>
+      {state === "win" && (
+        <Background src={require("../../assets/confetti.png")} alt="confetti" />
+      )}
+      <Emoji>
+        <i
+          className={`fa-solid fa-face-${
+            state === "win" ? "laugh-squint" : "dizzy"
+          }`}
+        ></i>
+      </Emoji>
       <h2>{state === "win" ? "정답입니다!" : "실패!"}</h2>
       {/* {state === "LOSE" && `정답은 "${answer}"입니다`} */}
       <ResultBox>
@@ -82,13 +92,15 @@ function GameResultModal({ state }: Props) {
         ))}
       </ResultBox>
       <Button onClick={onClickRestart}>새로운 게임 시작하기</Button>
-      <Button className="copy" onClick={onClickShare} isClicked={isCopy}>
-        <animated.div style={reverseStyle}>클립보드에 복사하기</animated.div>
-        <animated.div style={style}>
-          <i className="fa-solid fa-check" />
-          &nbsp; 복사 완료
-        </animated.div>
-      </Button>
+      {state === "win" && (
+        <Button className="copy" onClick={onClickShare} isClicked={isCopy}>
+          <animated.div style={reverseStyle}>클립보드에 복사하기</animated.div>
+          <animated.div style={style}>
+            <i className="fa-solid fa-check" />
+            &nbsp; 복사 완료
+          </animated.div>
+        </Button>
+      )}
     </Modal>
   );
 }
@@ -110,6 +122,23 @@ const Square = styled.div<StyleProps>`
   &.on {
     background-color: ${({ theme, colors }) => colors && theme.color[colors]};
     border-color: ${({ theme, colors }) => colors && theme.color[colors]};
+  }
+`;
+
+const Background = styled.img`
+  width: 480px;
+  position: absolute;
+  left: 10px;
+  top: 30px;
+  clip: rect(0, 380px, 140px, 0);
+`;
+
+const Emoji = styled.div`
+  height: 4rem;
+  padding: 1.5rem;
+  i {
+    font-size: 4rem;
+    color: ${({ theme }) => theme.color.present};
   }
 `;
 
