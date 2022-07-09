@@ -1,4 +1,4 @@
-import { WORDS } from "../constants/words";
+import { WORDS } from "../constants/_words";
 
 export const gameTimeInMs = () => {
   const epochMs = 1643122800000;
@@ -12,6 +12,7 @@ export const gameTimeInMs = () => {
 };
 
 const key = "gameSolution";
+const numberOfWords = WORDS.length;
 
 export const resetWord = () => {
   localStorage.removeItem(key);
@@ -22,7 +23,7 @@ export const getWordOfDay = () => {
   const savedValue = localStorage.getItem(key);
   let index;
   if (!savedValue) {
-    index = Math.floor(Math.random() * 38696);
+    index = Math.floor(Math.random() * numberOfWords);
     localStorage.setItem(key, JSON.stringify(index));
   } else {
     index = parseInt(savedValue);

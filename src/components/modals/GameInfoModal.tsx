@@ -67,7 +67,6 @@ const Wrap = styled.div`
   margin-bottom: 4rem;
   h2 {
     font-size: 18px;
-    margin-left: 4rem;
     margin-bottom: 3rem;
   }
   p {
