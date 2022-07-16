@@ -38,7 +38,7 @@ function GameStatsModal() {
       <Wrap>
         <h2> 도전 횟수 분포도</h2>
         {winDistribution.map((value, index) => (
-          <ChartBox>
+          <ChartBox key={index}>
             <div>{index + 1}</div>
             <Chart value={value + 5}>
               <div className="bar">{value}</div>
