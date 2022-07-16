@@ -6,11 +6,12 @@ import { styled } from "style/theme";
 import { CharStatus } from "utils/status";
 import cn from "classnames";
 import useResetState from "hooks/useResetState";
-// import { answer } from "utils/word";
+import { getWordOfDay } from "utils/word";
 import { addStatsForCompletedGame } from "utils/stats";
 import useModal from "./hooks/useModal";
 import { shareStatus } from "utils/share";
 import { useSpring, animated } from "react-spring";
+import * as Hangul from "hangul-js";
 
 type Props = {
   state: "win" | "lose";
@@ -77,8 +78,11 @@ function GameResultModal({ state }: Props) {
         ></i>
       </Emoji>
       <h2>{state === "win" ? "정답입니다!" : "실패!"}</h2>
-      {/* {state === "LOSE" && `정답은 "${answer}"입니다`} */}
       <ResultBox>
+        <div className="answer">
+          정답:{" "}
+          <strong>{`"${Hangul.assemble(getWordOfDay().split(""))}"`}</strong>
+        </div>
         {wordList.map((word, i) => (
           <ColumWrap key={i}>
             {word.map((char, index) => (
@@ -111,7 +115,15 @@ const ColumWrap = styled.div`
   margin-bottom: 0.2rem;
 `;
 const ResultBox = styled.div`
-  margin: 5rem 0;
+  margin: 4rem 0 5rem;
+  .answer {
+    font-size: 14px;
+    margin-bottom: 2rem;
+    strong {
+      font-family: bold;
+      font-size: 14px;
+    }
+  }
 `;
 const Square = styled.div<StyleProps>`
   width: 4rem;
