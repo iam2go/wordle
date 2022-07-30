@@ -47,33 +47,34 @@ const Overlay = styled.div`
 `;
 
 const ModalWrap = styled.div`
-  width: 42rem;
+  width: 44rem;
   height: fit-content;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  font-weight: 200;
   z-index: 9999;
 `;
 
 const CloseButton = styled.div`
   float: right;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   margin: 2rem 2rem 0rem 0rem;
   cursor: pointer;
   i {
     color: #5d5d5d;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 `;
 
 const Contents = styled.div`
   /* background-color: aquamarine; */
-  margin: 6rem 4rem;
+  margin: 6rem 5rem 7rem;
 `;
 
 export default Modal;

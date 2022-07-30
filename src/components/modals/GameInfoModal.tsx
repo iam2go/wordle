@@ -64,15 +64,16 @@ function GameInfoModal() {
 const Wrap = styled.div`
   width: 100%;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   h2 {
-    font-size: 18px;
-    margin-bottom: 3rem;
+    font-size: 20px;
+    margin-bottom: 4rem;
+    font-weight: 600;
   }
   p {
     font-size: 14px;
     text-align: left;
-    line-height: 14px;
+    line-height: 20px;
   }
 `;
 
