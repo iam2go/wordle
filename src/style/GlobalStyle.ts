@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Nunito','Pretendard', sans-serif;
         margin: 0;
         font-size: 12px;
+        background: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
+        transition: background 0.2s ease-in, color 0.2s ease-in;
     }
     h2{
         font-size: 18px;

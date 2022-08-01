@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import useModal from "components/modals/hooks/useModal";
 import useResetState from "hooks/useResetState";
+import cn from "classnames";
+import { ThemeContext } from "context/ThemeProvider";
 
 function Header() {
   const InfoModal = useModal("info");
   const StatModal = useModal("stats");
   const onReset = useResetState();
-
+  const { theme, onChangeTheme } = useContext(ThemeContext);
   const onClickInfo = () => {
     InfoModal.open();
   };
@@ -20,6 +22,15 @@ function Header() {
 
   return (
     <HeaderStyle>
+      <Button onClick={onChangeTheme}>
+        <i
+          className={cn(
+            "fa-solid",
+            { "fa-sun": theme === "light" },
+            { "fa-moon": theme === "dark" }
+          )}
+        ></i>
+      </Button>
       <Button onClick={onClickInfo}>
         <i className="fa-solid fa-circle-info"></i>
       </Button>

@@ -35,8 +35,8 @@ const SquareWrap = styled(animated.div)<StyleProps>`
   width: 5.5rem;
   height: 5.5rem;
   border-radius: 1rem;
-  background-color: white;
-  border: 2px solid #cdcdcd;
+  background-color: ${({ theme }) => theme.boardBg};
+  /* border: 2px solid #cdcdcd; */
   margin: 0.1rem;
   display: flex;
   justify-content: center;
@@ -44,7 +44,10 @@ const SquareWrap = styled(animated.div)<StyleProps>`
   font-size: 1.8rem;
   font-weight: 500;
   transform: scale(1);
-  border-color: ${({ value }) => (value ? "black" : "#cdcdcd")};
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${({ value, theme }) =>
+    value ? theme.boardBorder2 : theme.boardBorder1};
   &.on {
     background-color: ${({ theme, colors }) => colors && theme.color[colors]};
     border-color: ${({ theme, colors }) => colors && theme.color[colors]};

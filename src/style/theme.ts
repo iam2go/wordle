@@ -1,12 +1,30 @@
-import baseStyled, { ThemedStyledInterface } from "styled-components";
+import * as styledComponents from "styled-components";
+import { ThemedStyledComponentsModule } from "styled-components";
 
-export const theme = {
-  color: {
-    correct: "#54b2b2",
-    present: "#fdc500",
-    absent: "#9a9a9a",
-  },
+const color = {
+  correct: "#54b2b2",
+  present: "#fdc500",
+  absent: "#9a9a9a",
 };
 
-export type Theme = typeof theme;
-export const styled = baseStyled as ThemedStyledInterface<Theme>;
+export const light = {
+  body: "#fefefe",
+  text: "#202124",
+  boardBg: "white",
+  boardBorder1: "#cdcdcd",
+  boardBorder2: "#202124",
+  color: { ...color },
+};
+
+export const dark = {
+  body: "#202124",
+  text: "#fefefe",
+  boardBg: "#121212",
+  boardBorder1: "#8a817c",
+  boardBorder2: "#dfdfdf", // 활성화 시
+  color: { ...color },
+};
+
+export type Theme = typeof light;
+export const { default: styled, createGlobalStyle } =
+  styledComponents as any as ThemedStyledComponentsModule<Theme>;
