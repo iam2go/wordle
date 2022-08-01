@@ -13,6 +13,7 @@ export const light = {
   boardBg: "white",
   boardBorder1: "#cdcdcd",
   boardBorder2: "#202124",
+  button: "#dfdfdf",
   color: { ...color },
 };
 
@@ -22,6 +23,7 @@ export const dark = {
   boardBg: "#121212",
   boardBorder1: "#8a817c",
   boardBorder2: "#dfdfdf", // 활성화 시
+  button: "#464441",
   color: { ...color },
 };
 

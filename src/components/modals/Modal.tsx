@@ -1,6 +1,6 @@
 import useOutSideClick from "hooks/useOutSideClick";
 import React, { ReactNode, useEffect, useRef } from "react";
-import styled from "styled-components";
+import { styled } from "../../style/theme";
 import useModal from "./hooks/useModal";
 
 type Props = {
@@ -50,7 +50,7 @@ const ModalWrap = styled.div`
   width: 44rem;
   height: fit-content;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.body};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -67,7 +67,7 @@ const CloseButton = styled.div`
   margin: 2rem 2rem 0rem 0rem;
   cursor: pointer;
   i {
-    color: #5d5d5d;
+    color: ${({ theme }) => theme.text};
     font-size: 2.5rem;
   }
 `;

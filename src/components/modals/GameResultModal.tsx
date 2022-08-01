@@ -130,7 +130,7 @@ const Square = styled.div<StyleProps>`
   height: 4rem;
   border-radius: 0.8rem;
   margin: 0.1rem;
-  border: 2px solid #cdcdcd;
+  border: 2px solid ${({ theme }) => theme.boardBorder1};
   &.on {
     background-color: ${({ theme, colors }) => colors && theme.color[colors]};
     border-color: ${({ theme, colors }) => colors && theme.color[colors]};
@@ -166,6 +166,7 @@ const Button = styled.button<ButtonProps>`
   overflow: hidden;
   transition: 0.3s ease-out;
   background: none;
+  color: ${({ theme }) => theme.text};
   &::after {
     content: "";
     position: absolute;
@@ -173,7 +174,7 @@ const Button = styled.button<ButtonProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #e3dfdf;
+    background-color: ${({ theme }) => theme.button};
     border-radius: 1rem;
     z-index: -3;
   }
@@ -197,7 +198,7 @@ const Button = styled.button<ButtonProps>`
   }
   &.copy {
     background-color: ${({ isClicked }) => (isClicked ? `#989292` : `none`)};
-    color: ${({ isClicked }) => (isClicked ? `white` : `black`)};
+    color: ${({ isClicked, theme }) => (isClicked ? `white` : theme.text)};
     i {
       font-size: 14px;
     }
