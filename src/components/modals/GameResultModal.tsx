@@ -174,7 +174,7 @@ const Button = styled.button<ButtonProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme }) => theme.button};
+    background-color: ${({ theme }) => theme.button1};
     border-radius: 1rem;
     z-index: -3;
   }
@@ -185,7 +185,7 @@ const Button = styled.button<ButtonProps>`
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: #989292;
+    background-color: ${({ theme }) => theme.button2};
     transition: all 0.3s;
     border-radius: 1rem;
     z-index: -1;
@@ -197,7 +197,8 @@ const Button = styled.button<ButtonProps>`
     }
   }
   &.copy {
-    background-color: ${({ isClicked }) => (isClicked ? `#989292` : `none`)};
+    background-color: ${({ isClicked, theme }) =>
+      isClicked ? theme.button2 : `none`};
     color: ${({ isClicked, theme }) => (isClicked ? `white` : theme.text)};
     i {
       font-size: 14px;

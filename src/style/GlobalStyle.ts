@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Nunito','Pretendard', sans-serif;
         margin: 0;
         font-size: 12px;
-        background: ${({ theme }) => theme.body};
+        background: ${({ theme }) => theme.background1};
         color: ${({ theme }) => theme.text};
         transition: background 0.2s ease-in, color 0.2s ease-in;
     }

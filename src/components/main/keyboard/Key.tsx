@@ -36,7 +36,7 @@ function Key({ value, status, width = 4, onClick }: Props) {
 const KeyBlock = styled.div<StyleProps>`
   width: ${({ width }) => width + "rem"};
   height: 5.2rem;
-  background-color: ${({ theme }) => theme.button};
+  background-color: ${({ theme }) => theme.button1};
   border-radius: 0.3rem;
   display: flex;
   justify-content: center;

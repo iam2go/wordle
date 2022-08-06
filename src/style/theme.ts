@@ -2,28 +2,36 @@ import * as styledComponents from "styled-components";
 import { ThemedStyledComponentsModule } from "styled-components";
 
 const color = {
-  correct: "#54b2b2",
-  present: "#fdc500",
-  absent: "#9a9a9a",
+  correct: "#5babab",
+  present: "#fdb800",
+  absent: "#908790",
 };
 
 export const light = {
-  body: "#fefefe",
+  background1: "#fefefe",
+  background2: "#fefefe", // 다이얼로그
   text: "#202124",
+  keyBg1: "#e3e1e3",
+  KeyBg2: "#cfcbcf",
   boardBg: "white",
-  boardBorder1: "#cdcdcd",
+  boardBorder1: "#cfcbcf",
   boardBorder2: "#202124",
-  button: "#dfdfdf",
+  button1: "#e3e1e3",
+  button2: "908790",
   color: { ...color },
 };
 
 export const dark = {
-  body: "#202124",
+  background1: "#202124",
+  background2: "#38393e", // 다이얼로그
   text: "#fefefe",
-  boardBg: "#121212",
-  boardBorder1: "#8a817c",
-  boardBorder2: "#dfdfdf", // 활성화 시
-  button: "#464441",
+  keyBg1: "#403c40",
+  KeyBg2: "#766c76",
+  boardBg: "#131213",
+  boardBorder1: "#766c76",
+  boardBorder2: "#e3e1e3",
+  button1: "#403c40",
+  button2: "e3e1e3",
   color: { ...color },
 };
 

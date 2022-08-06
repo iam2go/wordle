@@ -50,7 +50,7 @@ const ModalWrap = styled.div`
   width: 44rem;
   height: fit-content;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.body};
+  background-color: ${({ theme }) => theme.background2};
   position: absolute;
   top: 50%;
   left: 50%;
