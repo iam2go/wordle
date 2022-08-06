@@ -30,8 +30,8 @@ export const dark = {
   boardBg: "#131213",
   boardBorder1: "#766c76",
   boardBorder2: "#e3e1e3",
-  button1: "#403c40",
-  button2: "e3e1e3",
+  button1: "#5c565c",
+  button2: "#908790",
   color: { ...color },
 };
 
