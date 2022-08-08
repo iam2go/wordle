@@ -25,7 +25,7 @@ function Key({ value, status, width = 4, onClick }: Props) {
     <KeyBlock
       width={width}
       color={status}
-      className={cn({ on: status })}
+      className={cn({ on: status }, "transition")}
       onClick={handleClick}
     >
       {value}

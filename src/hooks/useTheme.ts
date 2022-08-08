@@ -11,7 +11,6 @@ function useTheme() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    console.log(savedTheme);
     if (savedTheme && ["dark", "light"].includes(savedTheme)) {
       setTheme(savedTheme);
       return;

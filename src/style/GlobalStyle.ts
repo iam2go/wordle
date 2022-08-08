@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 12px;
         background: ${({ theme }) => theme.background1};
         color: ${({ theme }) => theme.text};
-        transition: background 0.2s ease-in, color 0.2s ease-in;
+        transition: background 0.3s ease-in, color 0.3s ease-in;
     }
     h2{
         font-size: 18px;
@@ -21,6 +21,9 @@ const GlobalStyle = createGlobalStyle`
     }
     div{
         font-size: 12px;
+    }
+    .transition {
+        transition: background 0.3s ease-in,  border-color 0.3s ease-in;
     }
 `;
 

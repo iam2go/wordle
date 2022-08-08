@@ -24,7 +24,7 @@ function Square({ value = "", status }: Props) {
       style={animateProps}
       value={value !== ""}
       colors={status}
-      className={cn({ on: status })}
+      className={cn({ on: status }, "transition")}
     >
       {value}
     </SquareWrap>

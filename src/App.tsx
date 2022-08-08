@@ -19,6 +19,9 @@ const Wrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* background: ${({ theme }) => theme.background1};
+  color: ${({ theme }) => theme.text};
+  transition: background 0.3s ease-in, color 0.3s ease-in; */
 `;
 
 export default App;
