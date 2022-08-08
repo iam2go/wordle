@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
 function useTheme() {
   const [theme, setTheme] = useState("light");
@@ -9,7 +9,7 @@ function useTheme() {
     localStorage.setItem("theme", updatedTheme);
   }, [theme]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme && ["dark", "light"].includes(savedTheme)) {
       setTheme(savedTheme);
