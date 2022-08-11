@@ -62,13 +62,16 @@ const ModalWrap = styled.div`
 
 const CloseButton = styled.div`
   float: right;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   margin: 2rem 2rem 0rem 0rem;
+  border-radius: 25px;
+  line-height: 3.4rem;
+  background-color: ${({ theme }) => theme.button1};
   cursor: pointer;
   i {
     color: ${({ theme }) => theme.text};
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 `;
 

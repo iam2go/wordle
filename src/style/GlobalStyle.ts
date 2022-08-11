@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
-    * {
+    html {
         font-size: 10px;
     }
     body{
@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
         //transition: background 0.4s ease-in, color 0.4s ease-in;
     }
     h2{
-        font-size: 18px;
+        font-size: 22px;
+        font-family: 'IBM Plex Sans KR';
     }
     button{
         cursor: pointer;
