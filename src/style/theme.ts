@@ -16,7 +16,7 @@ export const light = {
   boardBg: "white",
   boardBorder1: "#cfcbcf",
   boardBorder2: "#202124",
-  button1: "#e3e1e3",
+  button1: "#ededed",
   button2: "908790",
   color: { ...color },
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "../../style/theme";
 import { loadStats } from "utils/stats";
 import Modal from "./Modal";
 
@@ -12,6 +12,7 @@ type Props = {
 type ChartStyle = {
   value: number;
   index: number;
+  total: number;
 };
 
 function Stat({ text, value, unit }: Props) {
@@ -31,13 +32,15 @@ function GameStatsModal() {
     totalGames,
     successRate,
   } = loadStats();
+
+  const totalWins = winDistribution.reduce((a, b) => a + b);
   return (
     <Modal id="stats">
       <Wrap>
         <h2> 통계 </h2>
         <StatTable>
           <Stat text="총 시도 횟수🔥" value={totalGames} />
-          <Stat text="정답률✨" value={successRate} unit="%" />
+          <Stat text="정답률🎉" value={successRate} unit="%" />
           <Stat text="현재 연속 정답" value={currentStreak} />
           <Stat text="최대 연속 정답" value={bestStreak} />
         </StatTable>
@@ -47,8 +50,8 @@ function GameStatsModal() {
         {winDistribution.map((value, index) => (
           <ChartBox key={index}>
             <div>{index + 1}</div>
-            <Chart value={value + 5} index={index}>
-              <div className="bar">{value}</div>
+            <Chart value={value} index={index} total={totalWins}>
+              <div className="bar" />
             </Chart>
           </ChartBox>
         ))}
@@ -77,6 +80,11 @@ const StatTable = styled.div`
   }
   .text {
     font-size: 1.2rem;
+    height: fit-content;
+    background-color: ${({ theme }) => theme.button1};
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
   }
 `;
 const chartColor = [
@@ -93,20 +101,34 @@ const ChartBox = styled.div`
   margin: 1rem 2rem;
   justify-content: left;
   div {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    line-height: 2.7rem;
   }
 `;
 
 const Chart = styled.span<ChartStyle>`
   width: 100%;
-  height: 2rem;
-  margin-left: 0.5rem;
+  height: 2.7rem;
+  margin-left: 1rem;
   .bar {
-    background-color: ${({ index }) => chartColor[index]};
-    width: ${({ value }) => value + "%"};
-    height: 2rem;
-    border-radius: 0 0.8rem 0.8rem 0;
-    color: white;
+    background-color: ${({ theme }) => theme.button1};
+    width: 100%;
+    height: 2.7rem;
+    border-radius: 1.5rem;
+    position: relative;
+    &::before {
+      content: "${({ value }) => value}";
+      position: absolute;
+      left: 0;
+      background-color: ${({ index }) => chartColor[index]};
+      width: ${({ value, total }) => ((value / total) * 100 || 5) + "%"};
+      height: 100%;
+      border-radius: 1.5rem;
+      line-height: 2.7rem;
+      text-align: end;
+      color: white;
+      padding-right: 0.8rem;
+    }
   }
 `;
 
