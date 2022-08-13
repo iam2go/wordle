@@ -30,6 +30,5 @@ export const getWordOfDay = () => {
   }
   // const { elapsed, msInDay } = gameTimeInMs();
   // const index = Math.floor(elapsed / msInDay);
-  console.log(WORDS[index]);
   return WORDS[index];
 };
