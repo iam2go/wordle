@@ -54,6 +54,12 @@ function Keyboard() {
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
+      console.log(e.key);
+      if (/^[a-z]$/.test(e.key)) {
+        Toast.warning("키보드 설정을 한글로 변환해주세요.");
+        return;
+      }
+
       if (e.code === "Enter") {
         onClickEnter();
       } else if (e.code === "Backspace") {
