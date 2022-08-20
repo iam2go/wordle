@@ -95,7 +95,9 @@ function GameResultModal({ state }: Props) {
           </ColumWrap>
         ))}
       </ResultBox>
-      <Button onClick={onClickRestart}>새로운 게임 시작하기</Button>
+      <Button onClick={onClickRestart}>
+        {state === "win" ? "새로운 게임 시작하기" : "다시 도전하기🔥"}
+      </Button>
       {state === "win" && (
         <Button className="copy" onClick={onClickShare} isClicked={isCopy}>
           <animated.div style={reverseStyle}>클립보드에 복사하기</animated.div>
@@ -191,7 +193,7 @@ const Button = styled.button<ButtonProps>`
     z-index: -1;
   }
   &:hover {
-    color: white;
+    color: white !important;
     &::before {
       width: 100%;
     }
